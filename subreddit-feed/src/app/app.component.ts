@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'subreddit-feed';
+  url = 'https://www.reddit.com/r/sweden.json';
+  items = [];
+
+  constructor(private http: HttpClient){
+    this.http.get(this.url).toPromise().then(data => {
+      console.log(data);
+    }
+
+    )
+  }
 }
