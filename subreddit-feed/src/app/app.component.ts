@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+// import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -18,14 +18,13 @@ export class AppComponent {
     }
     )
   }
+//   getPosts(subreddit, postCount): Observable <any> {
+//     return this.http.get(`${this.baseURL}${subreddit}?limit=${postCount}`)
+// }
 
-  getPosts(subreddit, postCount): Observable <any> {
-    return this.http.get(`${this.baseURL}${subreddit}?limit=${postCount}`)
-}
-
-loadPosts() {
-  this.apiService.getPosts('funny', '6').subscribe((resp) => {
-      console.log(resp)
-  }
-,}
+// loadPosts() {
+//   this.apiService.getPosts('funny', '6').subscribe((resp) => {
+//       console.log(resp)
+//   }
+// ,}
 }
