@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class MySubredditComponent implements OnInit {
   
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }
