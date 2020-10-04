@@ -1,4 +1,5 @@
 export class Post {
+    id: string;
     thumbnail: string;
     created: number;
     num_comments: number;
