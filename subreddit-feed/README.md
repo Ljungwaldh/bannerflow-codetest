@@ -29,4 +29,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Planning
 
-![Ideal Result](subreddit/src/assets/ideal-result.png "Ideal Result")
+![Ideal Result](/subreddit-feed/src/assets/ideal-result.png "Ideal Result")
