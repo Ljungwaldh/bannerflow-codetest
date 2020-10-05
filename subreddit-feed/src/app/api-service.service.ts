@@ -11,8 +11,8 @@ export class ApiServiceService {
 
   constructor(private http: HttpClient) { }
 
-  fetchPosts():Observable<Post[]> {
-    return this.http.get<Post[]>('https://www.reddit.com/r/sweden.json?limit=25')
+  fetchPosts(subreddit:string):Observable<Post[]> {
+    return this.http.get<Post[]>('https://www.reddit.com/r/' + subreddit '.json?limit=25')
     .pipe(map(data => {
       const postsArray: Post[] = [];
       let children = data.json().data.children;
