@@ -4,12 +4,20 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MySubredditComponent } from './my-subreddit/my-subreddit.component';
+import { PostsComponent } from './posts/posts.component';
+import { SinglePostComponent } from './single-post/single-post.component';
+import { CommentsComponent } from './comments/comments.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { EntriesToggleComponent } from './entries-toggle/entries-toggle.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MySubredditComponent
+    PostsComponent,
+    SinglePostComponent,
+    CommentsComponent,
+    SearchBarComponent,
+    EntriesToggleComponent
   ],
   imports: [
     BrowserModule,

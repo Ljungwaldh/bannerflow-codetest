@@ -11,11 +11,11 @@ export class ApiServiceService {
 
   constructor(private http: HttpClient) { }
 
-  fetchPosts(subreddit:string):Observable<Post[]> {
-    return this.http.get<Post[]>('https://www.reddit.com/r/' + subreddit '.json?limit=25')
+  fetchPosts(subreddit:string, postCount:number):Observable<Post[]> {
+    return this.http.get<Post[]>(`https://www.reddit.com/r/${subreddit}.json?limit=${postCount}`)
     .pipe(map(data => {
       const postsArray: Post[] = [];
-      let children = data.json().data.children;
+      let children = data.children.data;
       for (var i=0; i<children.length) {
         let post:Post = new Post()
         post.title = children[i].data.title;
