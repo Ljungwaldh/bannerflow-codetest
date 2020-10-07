@@ -2,20 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Post } from './model/post'
+import { Post } from './model/post-model'
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  fetchPosts(subreddit:string, postCount:number):Observable<Post[]> {
+  fetchPosts(subreddit, postCount):Observable<Post[]> {
     return this.http.get<Post[]>(`https://www.reddit.com/r/${subreddit}.json?limit=${postCount}`)
     .pipe(map(data => {
       const postsArray: Post[] = [];
-      let children = data.children.data;
+      let children = data.children[].data;
       for (var i=0; i<children.length;) {
         let post:Post = new Post()
         post.title = children[i].data.title;
