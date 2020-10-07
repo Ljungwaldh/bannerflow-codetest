@@ -10,11 +10,11 @@ import { SinglePostComponent } from './single-post/single-post.component';
 import { CommentsComponent } from './comments/comments.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { EntriesToggleComponent } from './entries-toggle/entries-toggle.component';
-import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'search' },
   { path: 'search', component: SearchBarComponent }
+  { }
 ]
 
 @NgModule({
@@ -31,7 +31,7 @@ const routes: Routes = [
     HttpClientModule,
     NgbModule,
     FormsModule,
-    RouterModule.forRoot
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
