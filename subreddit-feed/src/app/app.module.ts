@@ -13,8 +13,9 @@ import { EntriesToggleComponent } from './entries-toggle/entries-toggle.componen
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'search' },
-  { path: 'search', component: SearchBarComponent }
-  { }
+  { path: 'search', component: SearchBarComponent },
+  { path: 'post-list', component: PostsComponent },
+  { path: 'single-post/:id', component: SinglePostComponent }
 ]
 
 @NgModule({
