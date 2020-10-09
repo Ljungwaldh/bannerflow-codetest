@@ -15,10 +15,7 @@ export class PostsComponent implements OnInit {
     }
 
     onFetchPosts() {
-      this.apiService.getPosts('sweden', '25').subscribe((resp) => {
-        console.log(resp);
-        
-      })
+      this.apiService.getPosts('sweden', '25').subscribe(response =>
+        console.log(response))
+      }
     }
-
-  }
