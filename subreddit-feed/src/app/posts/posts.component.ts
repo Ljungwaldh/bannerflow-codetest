@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Post } from '../model/post-model'
+import { HttpClient } from '@angular/common/http'
 
 @Component({
   selector: 'app-posts',
@@ -8,31 +9,30 @@ import { Post } from '../model/post-model'
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
+  constructor(private http: HttpClient, private apiService: ApiService) { }
 
-  constructor(private apiService: ApiService) {
-    loadPosts() {
+  ngOnInit(): void {
+    }
+
+    onFetchPosts() {
       this.apiService.getPosts('sweden', '25').subscribe((resp) => {
-        var postsArray:Post[] = []
+        const postsArray: Post[] = [];
         let children = resp.data.children
-        for (let post of children) {
-          post.title = children[post].data.title;
-          post.id = children[post].data.id;
-          post.thumbnail = children[post].data.thumbnail;
-          post.created = children[post].data.created;
-          post.num_comments = children[post].data.num_comments;
-          post.author = children[post].data.author;
-          post.score = children[post].data.score;
-          post.permalink = children[post].data.permalink;
-          post.url = children[post].data.url;
-          post.selftext = children[post].data.selftext;
-          postsArray.push(post);
+        for (const i of children) {
+          post.title = children[i].data.title;
+          post.id = children[i].data.id;
+          post.thumbnail = children[i].data.thumbnail;
+          post.created = children[i].data.created;
+          post.num_comments = children[i].data.num_comments;
+          post.author = children[i].data.author;
+          post.score = children[i].data.score;
+          post.permalink = children[i].data.permalink;
+          post.url = children[i].data.url;
+          post.selftext = children[i].data.selftext;
+          postsArray.push(i);
         }
         return postsArray;
       })
     }
-   }
 
-  ngOnInit(): void {
   }
-
-}

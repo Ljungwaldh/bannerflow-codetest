@@ -1,4 +1,11 @@
 <p>posts works!</p>
 
-<button class="btn btn-primary">Load Subreddit Posts</button>
+<button class="btn btn-primary"
+(click)="onFetchPosts()">Load Subreddit Posts</button>
 
+<ul>
+    <li class="list-group-item" *ngFor="let post of postArray"></li>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.author }}</p>
+        <p>{{ post.num_comments }}</p>
+</ul>
