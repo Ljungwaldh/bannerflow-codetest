@@ -15,6 +15,6 @@ export class ApiService {
   private baseURL = 'https://www.reddit.com/r/'
 
   getPosts(subreddit: string, entries: string):Observable<any> {
-    return this.http.get(`${this.baseURL}${subreddit}?limit=${entries}`)
+    return this.http.get(`${this.baseURL}${subreddit}.json?limit=${entries}`)
   }
 }
