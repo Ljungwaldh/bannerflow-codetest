@@ -18,6 +18,7 @@ export class ApiService {
   getPosts(subreddit: string, entries: string):Observable<any> {
     return this.http.get(`${this.baseURL}${subreddit}.json?limit=${entries}`)
     .pipe(map(response => {
+      let children = response[0].data.children;
       for (let key in response) {
         if(response.hasOwnProperty(key)){
           this.postsArray.push(response[key]);
