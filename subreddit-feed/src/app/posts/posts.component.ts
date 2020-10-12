@@ -10,12 +10,15 @@ import { HttpClient } from '@angular/common/http'
 })
 export class PostsComponent implements OnInit {
   constructor(private http: HttpClient, private apiService: ApiService) { }
-
+  
   ngOnInit(): void {
     }
+    
+    postsArray : Post;
 
     onFetchPosts() {
-      this.apiService.getPosts('sweden', '25').subscribe(response =>
-        console.log(response))
+      this.apiService.getPosts('sweden', '25').subscribe(response => {
+        return response;
+      })
       }
     }

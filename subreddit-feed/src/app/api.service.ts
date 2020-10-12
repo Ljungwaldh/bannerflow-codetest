@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpResponse } from '@angular/common/http'
 import { Observable, pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Post } from './model/post-model'
@@ -13,19 +13,32 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
   private baseURL = 'https://www.reddit.com/r/';
-  postsArray : Post[] = [];
+  subreddits : Post
 
-  getPosts(subreddit: string, entries: string):Observable<any> {
-    return this.http.get(`${this.baseURL}${subreddit}.json?limit=${entries}`)
+  getPosts(subreddit: string, entries: string):Observable<Post[]> {
+    return this.http.get<any>(`${this.baseURL}${subreddit}.json?limit=${entries}`)
     .pipe(map(response => {
-      let children = response[0].data.children;
-      for (let key in response) {
-        if(response.hasOwnProperty(key)){
-          this.postsArray.push(response[key]);
-        }
+      var subredditArray:Post[] = []
+      var dataArray:Post = response.data.children;
+      for (let i in dataArray) {
+        this.subreddits.title = dataArray[i].title;
+        this.subreddits.id = dataArray[i].id;
+        this.subreddits.thumbnail = dataArray[i].thumbnail;
+        this.subreddits.num_comments = dataArray[i].num_comments;
+        this.subreddits.author = dataArray[i].author;
+        subredditArray.push(this.subreddits);
+
       }
-      console.log(this.postsArray);
-      return response
+      console.log(subredditArray)
+      return subredditArray;
     }))
+    // .pipe(response => {
+    //   let responseArray:Post[] = response.data.children;
+    //   for (let post in response.data.children) {
+    //     responseArray.title = post.title
+    //   }
+    //   console.log(responseArray);
+    //   return responseArray;
+    // })
   }
 }
