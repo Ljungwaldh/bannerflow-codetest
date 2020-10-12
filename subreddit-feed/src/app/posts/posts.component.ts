@@ -14,11 +14,11 @@ export class PostsComponent implements OnInit {
   ngOnInit(): void {
     }
     
-    postsArray : Post;
+    loadedSubreddits:Post[] = [];
 
     onFetchPosts() {
       this.apiService.getPosts('sweden', '25').subscribe(response => {
-        return response;
+        this.loadedSubreddits = response;
       })
       }
     }
